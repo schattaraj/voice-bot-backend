@@ -1,5 +1,5 @@
 """Tests for the /api/v1/roleplay/sessions/{id}/transcript router,
-full-stack against the real MSSQL database via the client fixture (rolled
+full-stack against the real MySQL database via the client fixture (rolled
 back per test)."""
 
 import uuid

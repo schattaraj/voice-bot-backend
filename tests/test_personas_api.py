@@ -1,5 +1,5 @@
 """Tests for the /api/v1/personas router, full-stack against the real
-MSSQL database via the client fixture (rolled back per test)."""
+MySQL database via the client fixture (rolled back per test)."""
 
 import uuid
 

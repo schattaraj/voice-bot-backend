@@ -12,7 +12,7 @@ implemented yet — see [What's scaffolded vs. not](#whats-scaffolded-vs-not).
 - Python 3.13 (see note below), FastAPI, Uvicorn
 - Pydantic v2 / pydantic-settings
 - SQLAlchemy 2.x + Alembic
-- Microsoft SQL Server via `pyodbc` (`mssql+pyodbc` dialect)
+- MySQL via `PyMySQL` (`mysql+pymysql` dialect)
 - Poetry for dependency management
 
 > **Python version note:** the task specified Python 3.12, but only 3.13
@@ -26,13 +26,10 @@ implemented yet — see [What's scaffolded vs. not](#whats-scaffolded-vs-not).
 1. **Python 3.13** and **Poetry** (`pip install poetry`, or see
    [python-poetry.org](https://python-poetry.org/docs/#installation) for
    other install methods).
-2. **Microsoft ODBC Driver for SQL Server** (17 or 18) installed on the
-   host machine. This is an OS-level driver, not a Python package — search
-   "ODBC Driver for SQL Server download" on Microsoft's official site (Microsoft
-   Learn) for the current installer. Without it, `pyodbc` cannot connect to
-   SQL Server at all (you'll see a `Data source name not found` error).
-3. A reachable SQL Server instance (local, Docker, or Azure SQL) once you're
-   ready to run migrations — not required just to boot the API.
+2. A reachable **MySQL server** (5.7+ or 8.x — local, Docker, or a managed
+   instance) once you're ready to run migrations — not required just to
+   boot the API. `PyMySQL` is a pure-Python driver, so no OS-level client
+   library needs to be installed separately.
 
 ## Setup
 

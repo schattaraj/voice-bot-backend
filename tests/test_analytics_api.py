@@ -1,5 +1,5 @@
 """Tests for the /api/v1/analytics router, full-stack against the real
-MSSQL database via the client fixture (rolled back per test).
+MySQL database via the client fixture (rolled back per test).
 
 Evaluation rows are produced by the Evaluation Engine (Step 19), so these
 tests insert an Evaluation directly via the ORM rather than through the

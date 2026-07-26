@@ -1,4 +1,4 @@
-"""Tests for TranscriptRepository against the real MSSQL database (rolled
+"""Tests for TranscriptRepository against the real MySQL database (rolled
 back per test via the db_session fixture)."""
 
 from sqlalchemy.orm import Session

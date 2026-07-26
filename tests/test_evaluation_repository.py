@@ -1,4 +1,4 @@
-"""Tests for EvaluationRepository against the real MSSQL database (rolled
+"""Tests for EvaluationRepository against the real MySQL database (rolled
 back per test via the db_session fixture).
 
 EvaluationRepository is read-only (Evaluation rows are produced by the

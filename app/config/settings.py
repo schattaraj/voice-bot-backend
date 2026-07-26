@@ -16,11 +16,10 @@ class Settings(BaseSettings):
     cors_origins: list[str] = ["http://localhost:8000"]
 
     db_server: str = "localhost"
-    db_port: int = 1433
+    db_port: int = 3306
     db_name: str = "voice_bot"
-    db_user: str = "sa"
-    db_password: str = "1234"
-    db_odbc_driver: str = "ODBC Driver 18 for SQL Server"
+    db_user: str = "root"
+    db_password: str = ""
 
     # Which provider app.services.llm hands out via dependency injection.
     # Swapping this (and restarting the app) is the only thing required to
@@ -76,12 +75,10 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self) -> str:
-        """SQLAlchemy connection URL for MSSQL via the pyodbc driver."""
-        driver = self.db_odbc_driver.replace(" ", "+")
+        """SQLAlchemy connection URL for MySQL via the PyMySQL driver."""
         return (
-            f"mssql+pyodbc://{self.db_user}:{self.db_password}"
+            f"mysql+pymysql://{self.db_user}:{self.db_password}"
             f"@{self.db_server}:{self.db_port}/{self.db_name}"
-            f"?driver={driver}"
         )
 
 

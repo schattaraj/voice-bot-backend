@@ -1,6 +1,6 @@
 """Shared fixtures for repository/router tests.
 
-db_session runs every test against the real MSSQL database configured in
+db_session runs every test against the real MySQL database configured in
 Settings (see app.core.database) — there is no test-only substitute
 database here. Each test runs inside an outer transaction that is always
 rolled back afterwards, so tests never leave rows behind in voice_bot even
@@ -41,7 +41,7 @@ def db_session() -> Generator[Session, None, None]:
 @pytest.fixture()
 def client(db_session: Session) -> Generator[TestClient, None, None]:
     """A TestClient wired to the same rolled-back transaction as db_session,
-    so full-stack router tests hit the real MSSQL database without leaving
+    so full-stack router tests hit the real MySQL database without leaving
     any rows behind."""
 
     def _override_get_db() -> Generator[Session, None, None]:

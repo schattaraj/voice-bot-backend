@@ -1,4 +1,4 @@
-"""Tests for RoleplaySessionRepository against the real MSSQL database
+"""Tests for RoleplaySessionRepository against the real MySQL database
 (rolled back per test via the db_session fixture)."""
 
 import uuid

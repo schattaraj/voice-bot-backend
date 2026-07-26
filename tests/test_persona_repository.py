@@ -1,4 +1,4 @@
-"""Tests for PersonaRepository against the real MSSQL database (rolled
+"""Tests for PersonaRepository against the real MySQL database (rolled
 back per test via the db_session fixture)."""
 
 import uuid

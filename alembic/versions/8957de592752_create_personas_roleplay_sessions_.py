@@ -1,8 +1,8 @@
 """create personas, roleplay_sessions, transcript_messages, evaluations
 
-Revision ID: 8dc34c28b7d5
+Revision ID: 8957de592752
 Revises: 
-Create Date: 2026-07-25 14:29:11.548119
+Create Date: 2026-07-26 16:39:47.977552
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '8dc34c28b7d5'
+revision: str = '8957de592752'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -32,7 +32,7 @@ def upgrade() -> None:
     sa.Column('competitors', sa.JSON(), nullable=False),
     sa.Column('possible_objections', sa.JSON(), nullable=False),
     sa.Column('id', sa.Uuid(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('roleplay_sessions',
@@ -41,7 +41,7 @@ def upgrade() -> None:
     sa.Column('started_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('ended_at', sa.DateTime(timezone=True), nullable=True),
     sa.Column('id', sa.Uuid(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['persona_id'], ['personas.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -56,7 +56,7 @@ def upgrade() -> None:
     sa.Column('recommendations', sa.JSON(), nullable=False),
     sa.Column('timeline', sa.JSON(), nullable=False),
     sa.Column('id', sa.Uuid(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['session_id'], ['roleplay_sessions.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('session_id')
@@ -67,7 +67,7 @@ def upgrade() -> None:
     sa.Column('text', sa.Text(), nullable=False),
     sa.Column('timestamp_ms', sa.Integer(), nullable=False),
     sa.Column('id', sa.Uuid(), nullable=False),
-    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()'), nullable=False),
     sa.ForeignKeyConstraint(['session_id'], ['roleplay_sessions.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )

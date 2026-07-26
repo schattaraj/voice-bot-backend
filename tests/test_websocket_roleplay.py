@@ -3,7 +3,7 @@ session/persona resolution, heartbeat, the real LLM-driven conversation
 loop (with a fake LLMService), the scripted-mock fallback when no LLM key
 is configured, and disconnect cleanup.
 
-Runs against the real MSSQL database via the db_session/client fixtures in
+Runs against the real MySQL database via the db_session/client fixtures in
 conftest.py (each test rolled back afterwards) — a real Persona and
 RoleplaySession are created for every test, since the endpoint now
 resolves session_id against the database rather than accepting any
